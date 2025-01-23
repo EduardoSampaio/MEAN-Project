@@ -9,12 +9,18 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { HeaderComponent } from './header/header.component';
+import { PostListComponent } from './posts/post-list/post-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    HeaderComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +29,9 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    MatExpansionModule
   ],
   providers: [
     provideAnimationsAsync()
