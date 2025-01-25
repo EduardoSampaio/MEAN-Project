@@ -20,6 +20,6 @@ export class PostCreateComponent {
     }
 
     this.postService.addPost(postForm.value.title, postForm.value.content);
-    postForm.reset();
+    postForm.resetForm();
   }
 }

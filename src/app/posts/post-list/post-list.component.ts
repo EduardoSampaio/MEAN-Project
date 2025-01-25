@@ -7,8 +7,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-post-list',
   standalone: false,
   templateUrl: './post-list.component.html',
-  styleUrl: './post-list.component.css',
-  changeDetection: ChangeDetectionStrategy.Default,
+  styleUrl: './post-list.component.css'
 })
 export class PostListComponent implements OnInit, OnDestroy {
   posts: Array<Post> = [];
@@ -16,13 +15,12 @@ export class PostListComponent implements OnInit, OnDestroy {
 
   constructor(private postService: PostsService) {}
   ngOnInit(): void {
-    this.posts = this.postService.getPosts();
+    this.postService.getPosts();
 
     this.postsSub = this.postService.getPostUpdateListener().subscribe((posts: Post[]) => {
       this.posts = posts;
     });
   }
-
 
   ngOnDestroy(): void {
     this.postsSub.unsubscribe();
