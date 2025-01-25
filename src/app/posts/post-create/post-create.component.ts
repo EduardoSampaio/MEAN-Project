@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { PostsService } from '../posts.service';
 
 @Component({
   selector: 'app-post-create',
@@ -8,9 +10,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostCreateComponent {
-  enteredValue = '';
+
+  constructor(private postService: PostsService) {}
+
   newPost = 'NO CONTENT';
-  onAddPost() {
-    this.newPost = this.enteredValue;
+  onAddPost(postForm: NgForm) {
+    if (postForm.invalid) {
+      return;
+    }
+
+    this.postService.addPost(postForm.value.title, postForm.value.content);
+    postForm.reset();
   }
 }
