@@ -18,3 +18,7 @@ textarea {
 .btn-primary{
   margin: 20px;
 }
+
+mat-spinner{
+  margin: auto;
+}

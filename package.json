@@ -6,7 +6,7 @@
     "start": "ng serve --configuration=development",
     "build": "ng build --configuration=production",
     "watch": "ng build --watch --configuration development",
-    "start:server": "nodemon server.js",
+    "start:server": "nodemon --delay 3000ms server.js",
     "test": "ng test"
   },
   "private": true,
