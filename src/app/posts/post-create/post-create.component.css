@@ -5,9 +5,8 @@ textarea {
 }
 
 .form-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  width: 95%;
+  margin: auto;
 }
 
 .full-size-w{
@@ -16,9 +15,22 @@ textarea {
 }
 
 .btn-primary{
-  margin: 20px;
+  margin-bottom: 20px;
 }
 
 mat-spinner{
   margin: auto;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  height: 100%;
 }
