@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from '../post.model';
@@ -18,6 +18,9 @@ export class PostCreateComponent implements OnInit {
   isLoading = false;
   form!: FormGroup;
   imagePreview: string = '';
+
+  @ViewChild('filePicker')
+  filePicker:ElementRef<HTMLInputElement> | null = null;
 
   constructor(private postService: PostsService,
     private route: ActivatedRoute) { }
@@ -68,6 +71,7 @@ export class PostCreateComponent implements OnInit {
     }
     this.isLoading = false;
     this.form.reset();
+    this.filePicker!.nativeElement.value = "";
   }
 
   onImagePicked(event: Event) {
