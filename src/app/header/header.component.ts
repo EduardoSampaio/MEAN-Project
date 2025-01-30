@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,24 +11,24 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent {
   userIsAuthenticated = false;
-  //private authListenerSubs: Subscription;
+  private authListenerSubs!: Subscription;
 
-  constructor(/*private authService: AuthService*/) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    // this.userIsAuthenticated = this.authService.getIsAuth();
-    // this.authListenerSubs = this.authService
-    //   .getAuthStatusListener()
-    //   .subscribe(isAuthenticated => {
-    //     this.userIsAuthenticated = isAuthenticated;
-    //   });
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
   }
 
   onLogout() {
-    //this.authService.logout();
+    this.authService.logout();
   }
 
   ngOnDestroy() {
-    //this.authListenerSubs.unsubscribe();
+    this.authListenerSubs.unsubscribe();
   }
 }
