@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 @Component({
   templateUrl: "./error.component.html",
   selector: "app-error",
+  standalone: false
   // styleUrls: ["./error.component.css"]
 })
 export class ErrorComponent {
